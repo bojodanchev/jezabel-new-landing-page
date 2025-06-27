@@ -23,6 +23,7 @@
       margin: 20px auto;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+      position: relative;
     }
     .images {
       display: flex;
@@ -32,6 +33,14 @@
       width: 750px;
       height: 400px;
       object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .images img.active {
+      opacity: 1;
     }
     .textContainer {
       max-width: 700px;
@@ -74,7 +83,7 @@
 
   <div class="textContainer">
     <p><strong>🔮 -90% OFF for a few more seekers 🔮</strong></p>
-    <p><strong>🧿 I’ll be near <span id="locationMessage"></span> soon</strong></p>
+    <p><strong>🧿 I'll be near <span id="locationMessage"></span> soon</strong></p>
     <p>🟢 Online now – your tarot reader is ready</p>
     <p>Tap into the unseen. Jezabel is offering private readings and uncensored reveals</p>
     <p>🌙 <span id="outcomeMessage"></span> 🌙</p>
@@ -89,21 +98,27 @@
         if (data) {
           const city = data.city;
           const locationMsg = `${city}`;
-          const outcomeMsg = `This week I’ll reveal something intimate from ${city}… are you ready?`;
+          const outcomeMsg = `This week I'll reveal something intimate from ${city}… are you ready?`;
           $('#locationMessage').text(locationMsg);
           $('#outcomeMessage').text(outcomeMsg);
         }
       });
 
-      const imagesContainer = document.querySelector(".images");
       const images = document.querySelectorAll(".images img");
-      const total = images.length;
       let index = 0;
 
-      setInterval(() => {
-        index = (index + 1) % total;
-        imagesContainer.style.transform = `translateX(-${index * 750}px)`;
-      }, 3000);
+      function showImage() {
+        images.forEach((img, i) => {
+          img.classList.remove("active");
+          if (i === index) {
+            img.classList.add("active");
+          }
+        });
+        index = (index + 1) % images.length;
+      }
+
+      showImage();
+      setInterval(showImage, 3000);
     });
   </script>
 </body>
