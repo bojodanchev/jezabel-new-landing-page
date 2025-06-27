@@ -18,29 +18,43 @@
     }
     .gallery {
       width: 750px;
-      height: 400px;
-      overflow: hidden;
+      height: 500px;
       margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
       position: relative;
     }
     .images {
-      display: flex;
-      transition: transform 1s ease-in-out;
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
     .images img {
-      width: 750px;
-      height: 400px;
+      width: 600px;
+      height: 350px;
       object-fit: cover;
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 50px;
+      left: 75px;
+      transition: all 1s ease-in-out;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transform: scale(0.5) translateX(0) translateY(-100px);
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      z-index: 1;
     }
     .images img.active {
+      transform: scale(1.2) rotate(0deg) translateX(0);
+      z-index: 10;
       opacity: 1;
+    }
+    .images img.prev {
+      transform: scale(1) rotate(-15deg) translateX(-180px);
+      z-index: 9;
+      opacity: 0.6;
+    }
+    .images img.next {
+      transform: scale(1) rotate(15deg) translateX(180px);
+      z-index: 8;
+      opacity: 0.6;
     }
     .textContainer {
       max-width: 700px;
@@ -105,20 +119,30 @@
       });
 
       const images = document.querySelectorAll(".images img");
-      let index = 0;
+      const totalImages = images.length;
+      let currentIndex = 0;
 
-      function showImage() {
-        images.forEach((img, i) => {
-          img.classList.remove("active");
-          if (i === index) {
-            img.classList.add("active");
-          }
+      function updateGallery() {
+        images.forEach((img) => {
+          img.classList.remove('active', 'prev', 'next');
         });
-        index = (index + 1) % images.length;
+
+        const prevIndex = (currentIndex - 1 + totalImages) % totalImages;
+        const nextIndex = (currentIndex + 1) % totalImages;
+
+        if (totalImages > 0) images[currentIndex].classList.add('active');
+        if (totalImages > 1) images[prevIndex].classList.add('prev');
+        if (totalImages > 2) images[nextIndex].classList.add('next');
       }
 
-      showImage();
-      setInterval(showImage, 3000);
+      function showNextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateGallery();
+      }
+      
+      updateGallery();
+
+      setInterval(showNextImage, 3000);
     });
   </script>
 </body>
