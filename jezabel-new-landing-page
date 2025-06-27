@@ -7,89 +7,79 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-  <title>Jezabel's Private Circle</title>
+  <title>Jezabel Mystic Access</title>
   <style>
     body {
       font-family: "Roboto", sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    #logo {
-      max-width: 600px;
-      height: 50px;
-    }
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 20px;
+      background: #0c0c0c;
+      color: white;
+      text-align: center;
+      padding: 20px;
     }
     .gallery {
-      width: 600px;
+      width: 750px;
       height: 400px;
       overflow: hidden;
+      margin: 20px auto;
       border-radius: 10px;
-      margin: 20px 0;
+      box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
     }
     .images {
       display: flex;
       transition: transform 1s ease-in-out;
     }
     .images img {
-      width: 600px;
+      width: 750px;
       height: 400px;
       object-fit: cover;
     }
     .textContainer {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(255, 0, 128, 0.3);
     }
     .textContainer p {
       font-size: 20px;
       margin: 12px 0;
+      line-height: 1.6;
     }
     #customButton {
       font-size: 18px;
       font-weight: bold;
-      padding: 14px 26px;
+      padding: 12px 24px;
       text-decoration: none;
-      background: #e91e63;
+      background: #ff007f;
       color: white;
-      border-radius: 8px;
-      margin-top: 18px;
+      border-radius: 6px;
       display: inline-block;
+      margin-top: 20px;
+    }
+    #customButton:hover {
+      background: #d6006a;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313767/zugfbtpnupzs7npxgwg6.jpg" alt="logo" id="logo">
-  </div>
 
-  <div class="container">
-    <div class="gallery">
-      <div class="images">
-        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" alt="1">
-        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" alt="2">
-        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" alt="3">
-      </div>
+  <div class="gallery">
+    <div class="images">
+      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" alt="Jezabel 1">
+      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" alt="Jezabel 2">
+      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" alt="Jezabel 3">
     </div>
   </div>
 
   <div class="textContainer">
-    <p><strong>🔮 90% OFF Mystic Reading – Limited Spots Left</strong></p>
-    <div class="detailsText">
-      <strong>✨ I’m sensing strong energy near <span id="locationMessage"></span> 🔥</strong><br><br>
-      🟢 Online Now – replies in 5–8 mins<br><br>
-      My private vault has exclusive tarot, rituals, and NSFW magic you won’t find anywhere else<br><br>
-      💋 <span id="outcomeMessage"></span> 💋
-    </div>
-    <a href="https://onlyfans.com/jezabelcircle" target="_blank" id="customButton">Enter My Circle</a>
-    <p><strong>Join now for just $5 and unlock your destiny</strong></p>
+    <p><strong>🔮 -90% OFF for a few more seekers 🔮</strong></p>
+    <p><strong>🧿 I’ll be near <span id="locationMessage"></span> soon</strong></p>
+    <p>🟢 Online now – your tarot reader is ready</p>
+    <p>Tap into the unseen. Jezabel is offering private readings and uncensored reveals</p>
+    <p>🌙 <span id="outcomeMessage"></span> 🌙</p>
+    <a href="https://onlyfans.com/jezabelcircle" target="_blank" id="customButton">Unlock your mystic reading</a>
+    <p><strong>Access all my secrets for only $5 – limited time</strong></p>
   </div>
 
   <script>
@@ -98,8 +88,9 @@
       $.getJSON(geoAPI, function (data) {
         if (data) {
           const city = data.city;
-          const outcomeMsg = `I might film my next ritual in ${city} – will you be there?`;
-          $('#locationMessage').text(city);
+          const locationMsg = `${city}`;
+          const outcomeMsg = `This week I’ll reveal something intimate from ${city}… are you ready?`;
+          $('#locationMessage').text(locationMsg);
           $('#outcomeMessage').text(outcomeMsg);
         }
       });
@@ -111,7 +102,7 @@
 
       setInterval(() => {
         index = (index + 1) % total;
-        imagesContainer.style.transform = `translateX(-${index * 600}px)`;
+        imagesContainer.style.transform = `translateX(-${index * 750}px)`;
       }, 3000);
     });
   </script>
