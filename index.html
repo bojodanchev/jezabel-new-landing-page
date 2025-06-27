@@ -83,15 +83,46 @@
     #customButton:hover {
       background: #d6006a;
     }
+
+    @media (max-width: 768px) {
+      .gallery {
+        width: 100%;
+        height: 300px;
+      }
+      .images img {
+        width: 80%;
+        height: 250px;
+        left: 10%;
+        top: 25px;
+      }
+      .images img.active {
+        transform: scale(1.1) rotate(0deg) translateX(0);
+      }
+      .images img.prev {
+        transform: scale(0.9) rotate(-15deg) translateX(-30%);
+        opacity: 0.5;
+      }
+      .images img.next {
+        transform: scale(0.9) rotate(15deg) translateX(30%);
+        opacity: 0.5;
+      }
+      .textContainer {
+        width: 90%;
+        padding: 15px;
+      }
+      .textContainer p {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="gallery">
     <div class="images">
-      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" alt="Jezabel 1">
-      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" alt="Jezabel 2">
-      <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" alt="Jezabel 3">
+      <img src="https://res.cloudinary.com/dmselfsps/image/upload/q_auto:best/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" alt="Jezabel 1">
+      <img src="https://res.cloudinary.com/dmselfsps/image/upload/q_auto:best/v1750264750/rzpg8hetdwudsbqocain.jpg" alt="Jezabel 2">
+      <img src="https://res.cloudinary.com/dmselfsps/image/upload/q_auto:best/v1750010766/hn6fku1zncup3yqs5nq5.jpg" alt="Jezabel 3">
     </div>
   </div>
 
