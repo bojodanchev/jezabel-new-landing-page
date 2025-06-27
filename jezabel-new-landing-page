@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <title>Jezabel Mystic Landing</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #0d0b14;
+      color: white;
+      padding: 20px;
+    }
+    #logo {
+      max-width: 600px;
+      height: 50px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .gallery {
+      width: 750px;
+      height: 400px;
+      overflow: hidden;
+      border: 2px solid #333;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    .images {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+    .images img {
+      width: 600px;
+      height: 400px;
+      object-fit: cover;
+    }
+    .textContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .textContainer p {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+    #customButton {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 20px;
+      text-decoration: none;
+      background: #d62857;
+      color: white;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="logo" id="logo">
+  </div>
+
+  <div class="container">
+    <div class="gallery">
+      <div class="images">
+        <img src="1.jpg" alt="Image 1">
+        <img src="2.jpg" alt="Image 2">
+        <img src="3.jpg" alt="Image 3">
+        <img src="4.jpg" alt="Image 4">
+        <img src="5.jpg" alt="Image 5">
+        <img src="6.jpg" alt="Image 6">
+      </div>
+    </div>
+  </div>
+
+  <div class="textContainer">
+    <p><strong>✨ 90% OFF Today Only ✨</strong></p>
+    <div class="detailsText">
+      <strong>📍 I just felt your energy from <span id="locationMessage"></span> ✨</strong><br><br>
+      🟢 Online Now ⏰ Tarot and NSFW readings open below<br><br>
+      Get full access to my private vault and uncensored rituals - not allowed anywhere else 🔮<br><br>
+      💫 <span id="outcomeMessage"></span> 💫
+    </div>
+    <a href="https://onlyfans.com/jezabelcircle" target="_blank" id="customButton">Book Your Reading ⚡</a>
+    <p><strong>Unlock my secret space now for just $5.00/mo - limited spell window</strong></p>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const geoAPI = "https://api.ipgeolocation.io/ipgeo?apiKey=1cf5225c7f9c4cdf811cba5cb070561f";
+      $.getJSON(geoAPI, function (data) {
+        if (data) {
+          const city = data.city;
+          const country = data.country_name;
+          const locationMsg = `${city}, ${country}`;
+          const outcomeMsg = `Next month I may be casting live rituals in ${city} ✨ Want in?`;
+          $('#locationMessage').text(locationMsg);
+          $('#outcomeMessage').text(outcomeMsg);
+        }
+      });
+
+      const imagesContainer = document.querySelector(".images");
+      const images = document.querySelectorAll(".images img");
+      const total = images.length;
+      let index = 0;
+
+      setInterval(() => {
+        index = (index + 1) % total;
+        imagesContainer.style.transform = `translateX(-${index * 600}px)`;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
