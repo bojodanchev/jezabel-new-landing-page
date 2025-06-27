@@ -7,10 +7,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-  <title>Document</title>
+  <title>Jezabel's Private Circle</title>
   <style>
     body {
       font-family: "Roboto", sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
     #logo {
       max-width: 600px;
@@ -20,12 +24,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      margin-top: 20px;
     }
     .gallery {
-      width: 750px;
+      width: 600px;
       height: 400px;
       overflow: hidden;
-      border: 2px solid #ccc;
+      border-radius: 10px;
       margin: 20px 0;
     }
     .images {
@@ -38,55 +44,52 @@
       object-fit: cover;
     }
     .textContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .textContainer p {
-      font-size: 22px;
-      margin: 10px 0;
+      font-size: 20px;
+      margin: 12px 0;
     }
     #customButton {
       font-size: 18px;
       font-weight: bold;
-      padding: 10px 20px;
+      padding: 14px 26px;
       text-decoration: none;
       background: #e91e63;
       color: white;
-      border-radius: 6px;
-      margin: 10px 0;
+      border-radius: 8px;
+      margin-top: 18px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="logo" id="logo">
+    <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313767/zugfbtpnupzs7npxgwg6.jpg" alt="logo" id="logo">
   </div>
 
   <div class="container">
     <div class="gallery">
       <div class="images">
-        <img src="1.jpg" alt="Image 1">
-        <img src="2.jpg" alt="Image 2">
-        <img src="3.jpg" alt="Image 3">
-        <img src="4.jpg" alt="Image 4">
-        <img src="5.jpg" alt="Image 5">
-        <img src="6.jpg" alt="Image 6">
+        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750313122/nvn1zxrhbkirnpggpvl8.jpg" alt="1">
+        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750264750/rzpg8hetdwudsbqocain.jpg" alt="2">
+        <img src="https://res.cloudinary.com/dmselfsps/image/upload/v1750010766/hn6fku1zncup3yqs5nq5.jpg" alt="3">
       </div>
     </div>
   </div>
 
   <div class="textContainer">
-    <p><strong>🚨 -90% OFF SALE 🚨 only 2 more spots!</strong></p>
+    <p><strong>🔮 90% OFF Mystic Reading – Limited Spots Left</strong></p>
     <div class="detailsText">
-      <strong>📍I will be near <span id="locationMessage"></span> soon 😏</strong><br><br>
-      🟢 Online Now ⏰ Answering DM's in 5-8 minutes 👇<br><br>
-      Get exclusive access to my uncensored content that I am not allowed to share anywhere else. 😈<br><br>
-      💦 <span id="outcomeMessage"></span> 💦
+      <strong>✨ I’m sensing strong energy near <span id="locationMessage"></span> 🔥</strong><br><br>
+      🟢 Online Now – replies in 5–8 mins<br><br>
+      My private vault has exclusive tarot, rituals, and NSFW magic you won’t find anywhere else<br><br>
+      💋 <span id="outcomeMessage"></span> 💋
     </div>
-    <a href="https://onlyfans.com/lilycleo" target="_blank" id="customButton">Send me a message here 🔞</a>
-    <p><strong>Access my private account now, to see my naughty side for just $5.00/m, limited time!</strong></p>
+    <a href="https://onlyfans.com/jezabelcircle" target="_blank" id="customButton">Enter My Circle</a>
+    <p><strong>Join now for just $5 and unlock your destiny</strong></p>
   </div>
 
   <script>
@@ -95,10 +98,8 @@
       $.getJSON(geoAPI, function (data) {
         if (data) {
           const city = data.city;
-          const country = data.country_name;
-          const locationMsg = ${city}, ${country};
-          const outcomeMsg = End of July I will be visiting ${city} 📍 and I might shoot my new content there with you;
-          $('#locationMessage').text(locationMsg);
+          const outcomeMsg = `I might film my next ritual in ${city} – will you be there?`;
+          $('#locationMessage').text(city);
           $('#outcomeMessage').text(outcomeMsg);
         }
       });
@@ -110,7 +111,7 @@
 
       setInterval(() => {
         index = (index + 1) % total;
-        imagesContainer.style.transform = translateX(-${index * 600}px);
+        imagesContainer.style.transform = `translateX(-${index * 600}px)`;
       }, 3000);
     });
   </script>
