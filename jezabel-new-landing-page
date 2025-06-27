@@ -7,13 +7,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-  <title>Jezabel Mystic Landing</title>
+  <title>Document</title>
   <style>
     body {
       font-family: "Roboto", sans-serif;
-      background-color: #0d0b14;
-      color: white;
-      padding: 20px;
     }
     #logo {
       max-width: 600px;
@@ -28,9 +25,8 @@
       width: 750px;
       height: 400px;
       overflow: hidden;
-      border: 2px solid #333;
+      border: 2px solid #ccc;
       margin: 20px 0;
-      border-radius: 10px;
     }
     .images {
       display: flex;
@@ -56,7 +52,7 @@
       font-weight: bold;
       padding: 10px 20px;
       text-decoration: none;
-      background: #d62857;
+      background: #e91e63;
       color: white;
       border-radius: 6px;
       margin: 10px 0;
@@ -82,15 +78,15 @@
   </div>
 
   <div class="textContainer">
-    <p><strong>✨ 90% OFF Today Only ✨</strong></p>
+    <p><strong>🚨 -90% OFF SALE 🚨 only 2 more spots!</strong></p>
     <div class="detailsText">
-      <strong>📍 I just felt your energy from <span id="locationMessage"></span> ✨</strong><br><br>
-      🟢 Online Now ⏰ Tarot and NSFW readings open below<br><br>
-      Get full access to my private vault and uncensored rituals - not allowed anywhere else 🔮<br><br>
-      💫 <span id="outcomeMessage"></span> 💫
+      <strong>📍I will be near <span id="locationMessage"></span> soon 😏</strong><br><br>
+      🟢 Online Now ⏰ Answering DM's in 5-8 minutes 👇<br><br>
+      Get exclusive access to my uncensored content that I am not allowed to share anywhere else. 😈<br><br>
+      💦 <span id="outcomeMessage"></span> 💦
     </div>
-    <a href="https://onlyfans.com/jezabelcircle" target="_blank" id="customButton">Book Your Reading ⚡</a>
-    <p><strong>Unlock my secret space now for just $5.00/mo - limited spell window</strong></p>
+    <a href="https://onlyfans.com/lilycleo" target="_blank" id="customButton">Send me a message here 🔞</a>
+    <p><strong>Access my private account now, to see my naughty side for just $5.00/m, limited time!</strong></p>
   </div>
 
   <script>
@@ -100,8 +96,8 @@
         if (data) {
           const city = data.city;
           const country = data.country_name;
-          const locationMsg = `${city}, ${country}`;
-          const outcomeMsg = `Next month I may be casting live rituals in ${city} ✨ Want in?`;
+          const locationMsg = ${city}, ${country};
+          const outcomeMsg = End of July I will be visiting ${city} 📍 and I might shoot my new content there with you;
           $('#locationMessage').text(locationMsg);
           $('#outcomeMessage').text(outcomeMsg);
         }
@@ -114,7 +110,7 @@
 
       setInterval(() => {
         index = (index + 1) % total;
-        imagesContainer.style.transform = `translateX(-${index * 600}px)`;
+        imagesContainer.style.transform = translateX(-${index * 600}px);
       }, 3000);
     });
   </script>
