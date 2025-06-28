@@ -83,6 +83,14 @@
     #customButton:hover {
       background: #d6006a;
     }
+    #timer-container {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+    #timer {
+      color: #ff007f;
+      font-size: 20px;
+    }
 
     @media (max-width: 768px) {
       .gallery {
@@ -130,11 +138,12 @@
   </div>
 
   <div class="textContainer">
-    <p><strong>🔮 -90% OFF for a few more seekers 🔮</strong></p>
+    <p><strong>🔮 -90% OFF RIGHT NOW 🔮</strong></p>
     <p><strong>🧿 I'll be near <span id="locationMessage"></span> soon</strong></p>
     <p>🟢 Online now – your tarot reader is ready</p>
     <p>Tap into the unseen. Jezabel is offering private readings and uncensored reveals</p>
     <p>🌙 <span id="outcomeMessage"></span> 🌙</p>
+    <p id="timer-container">Your offer expires in: <strong id="timer">07:07</strong></p>
     <a href="https://onlyfans.com/jezabelcircle" target="_blank" id="customButton">Unlock your mystic reading</a>
     <p><strong>Access all my secrets for only $5 – limited time</strong></p>
   </div>
@@ -177,6 +186,29 @@
       updateGallery();
 
       setInterval(showNextImage, 3000);
+
+      // Countdown Timer
+      let timeInSeconds = 7 * 60 + 7;
+      const timerElement = document.getElementById("timer");
+
+      const timerInterval = setInterval(() => {
+        if (timeInSeconds <= 0) {
+          clearInterval(timerInterval);
+          if (timerElement) {
+            timerElement.parentElement.innerHTML = "<strong>Your special offer has expired!</strong>";
+          }
+          return;
+        }
+
+        timeInSeconds--;
+
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = timeInSeconds % 60;
+
+        if (timerElement) {
+          timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+      }, 1000);
     });
   </script>
 </body>
